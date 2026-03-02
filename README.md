@@ -81,3 +81,18 @@ Contar espacios
 Mostrar resultados
    ↓
 FIN
+
+# 8 Casos de prueba formales
+Casos válidos
+Entra       Vocales     Consonantes     Espacios
+Hola        2           2               0
+Hola mundo  4           5               1
+AEIOU       5           0               0
+bcdfg       0           5               0
+
+Casos inválidos
+Entrada             motivo
+hola123             números
+hola!               Simbolo
+mañana              ñ
+café                tilde
