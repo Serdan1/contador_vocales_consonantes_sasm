@@ -43,5 +43,8 @@ Para las entradas válidas, tenemos que contrar:
 - Total de vocales
 - Total de consonantes
 - Total de espacios
+Definición formal de vocales
 Se considera valesles: A E I O U a e i o u
 NO se distingue entre mayúsculas y minúsculas
+Definición formal de consonantes
+Un consonante es: Cualquier letra ASCII válida que no sea vocal.
