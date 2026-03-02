@@ -9,7 +9,7 @@ section .data
     msg_e       db "Espacios: ", 0
 
 section .bss
-    buffer      resb 101          ; 100 + terminador 0
+    buffer      resb 101
     vocales     resd 1
     consonantes resd 1
     espacios    resd 1
@@ -21,17 +21,29 @@ CMAIN:
     mov ebp, esp
 
 INICIO:
-    ; reset contadores
     mov dword [vocales], 0
     mov dword [consonantes], 0
     mov dword [espacios], 0
 
-    ; pedir + leer string
     PRINT_STRING msg_pedir
     GET_STRING buffer, 100
     NEWLINE
 
-    ; de momento terminamos (en próximos commits recorremos y contamos)
+    mov esi, buffer
+
+RECORRIDO:
+    mov al, [esi]
+    cmp al, 0
+    je MOSTRAR_RESULTADOS
+
+    ; por ahora: no contamos nada, solo avanzamos
+    inc esi
+    jmp RECORRIDO
+
+MOSTRAR_RESULTADOS:
+    ; aún no imprimimos (lo haremos en el último commit)
+    jmp FIN
+
 FIN:
     xor eax, eax
     ret
