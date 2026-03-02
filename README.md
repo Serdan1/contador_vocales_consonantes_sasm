@@ -48,3 +48,10 @@ Se considera valesles: A E I O U a e i o u
 NO se distingue entre mayúsculas y minúsculas
 Definición formal de consonantes
 Un consonante es: Cualquier letra ASCII válida que no sea vocal.
+
+# 6  Forma exacta de salida
+La salida tiene que tener la siguiente forma:
+Vocales: X
+Consonantes: Y
+Espacios: Z
+Cada elemento tiene que estar en lineas independientes.
