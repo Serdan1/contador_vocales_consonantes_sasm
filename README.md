@@ -37,3 +37,11 @@ La entraada es inválida si ocurre cualquiera de los siguientes:
 Cuando la entrada es inválida:
 - Mostrara: Error entrada no valida
 - permitira intentos ilimitados
+
+# 5 Conteo requerido
+Para las entradas válidas, tenemos que contrar:
+- Total de vocales
+- Total de consonantes
+- Total de espacios
+Se considera valesles: A E I O U a e i o u
+NO se distingue entre mayúsculas y minúsculas
