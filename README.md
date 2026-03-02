@@ -51,9 +51,13 @@ Un consonante es: Cualquier letra ASCII válida que no sea vocal.
 
 # 6  Forma exacta de salida
 La salida tiene que tener la siguiente forma:
+
 Vocales: X
+
 Consonantes: Y
+
 Espacios: Z
+
 Cada elemento tiene que estar en lineas independientes.
 
 # 7 Flujo formal del programa
