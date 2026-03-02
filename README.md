@@ -22,3 +22,13 @@ Caracteres permitidos
 - Espacio simple (ASCII 32)
 Codificación
 - Solo ASCII estándar (0-127)
+
+# 3 Definición formar de Errores
+La entraada es inválida si ocurre cualquiera de los siguientes:
+- Contiene números (0–9)
+- Contiene símbolos (!@#$%^&*)
+- Contiene tildes (á, é, í, ó, ú)
+- Contiene ñ
+- Contiene tabulaciones
+- Contiene caracteres ASCII extendidos (>127)
+- Supera 100 caracteres
