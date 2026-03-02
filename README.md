@@ -32,3 +32,8 @@ La entraada es inválida si ocurre cualquiera de los siguientes:
 - Contiene tabulaciones
 - Contiene caracteres ASCII extendidos (>127)
 - Supera 100 caracteres
+
+# 4 Comprotamiento anti Errores
+Cuando la entrada es inválida:
+- Mostrara: Error entrada no valida
+- permitira intentos ilimitados
