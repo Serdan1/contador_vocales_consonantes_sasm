@@ -36,12 +36,18 @@ RECORRIDO:
     cmp al, 0
     je MOSTRAR_RESULTADOS
 
-    ; por ahora: no contamos nada, solo avanzamos
+    cmp al, ' '
+    je ES_ESPACIO
+
+    inc esi
+    jmp RECORRIDO
+
+ES_ESPACIO:
+    inc dword [espacios]
     inc esi
     jmp RECORRIDO
 
 MOSTRAR_RESULTADOS:
-    ; aún no imprimimos (lo haremos en el último commit)
     jmp FIN
 
 FIN:
