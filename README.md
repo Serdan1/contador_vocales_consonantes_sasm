@@ -55,3 +55,29 @@ Vocales: X
 Consonantes: Y
 Espacios: Z
 Cada elemento tiene que estar en lineas independientes.
+
+# 7 Flujo formal del programa
+INICIO
+   ↓
+Solicitar texto
+   ↓
+¿Texto vacío?
+   ↓
+¿Supera 100?
+   ↓
+Validar cada carácter
+   ↓
+¿Carácter inválido?
+   ↓
+    SI → Mostrar error → volver a solicitar
+    NO → Continuar validación
+   ↓
+Fin validación
+   ↓
+Contar vocales
+Contar consonantes
+Contar espacios
+   ↓
+Mostrar resultados
+   ↓
+FIN
