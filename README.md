@@ -122,6 +122,33 @@ El proyecto utiliza varios conceptos fundamentales de **Arquitectura de Computad
 
 ---
 
+## Diagrama de funcionamiento
+
+```mermaid
+flowchart TD
+    A([INICIO]) --> B[Reset contadores: vocales=0, consonantes=0, espacios=0]
+    B --> C[Mostrar mensaje y leer texto en buffer]
+    C --> D[ESI apunta al buffer]
+    D --> E{AL leido. AL es 0?}
+
+    E -- Si --> R[Mostrar resultados: vocales, consonantes, espacios]
+    R --> F([FIN])
+
+    E -- No --> S{AL es espacio?}
+    S -- Si --> S1[espacios++]
+    S1 --> I[ESI++]
+    I --> E
+
+    S -- No --> L{AL es letra A-Z o a-z?}
+    L -- No --> X[Mostrar error y reintentar]
+    X --> A
+
+    L -- Si --> V{AL es vocal AEIOU o aeiou?}
+    V -- Si --> V1[vocales++]
+    V -- No --> C1[consonantes++]
+    V1 --> I
+    C1 --> I
+```
 # Autor
 
 Daniel, Alexander
