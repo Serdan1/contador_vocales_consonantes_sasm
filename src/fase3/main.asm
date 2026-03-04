@@ -39,7 +39,7 @@ RECORRIDO:
     cmp al, ' '
     je ES_ESPACIO
 
-    ; validar letras: A-Z o a-z, si no -> error
+    ; validar letras: A-Z o a-z
     cmp al, 'A'
     jl CARACTER_INVALIDO
     cmp al, 'Z'
@@ -58,7 +58,36 @@ ES_ESPACIO:
     jmp RECORRIDO
 
 ES_LETRA:
-    ; todavía no contamos vocal/consonante
+    ; detectar vocal
+    cmp al, 'A'
+    je ES_VOCAL
+    cmp al, 'E'
+    je ES_VOCAL
+    cmp al, 'I'
+    je ES_VOCAL
+    cmp al, 'O'
+    je ES_VOCAL
+    cmp al, 'U'
+    je ES_VOCAL
+
+    cmp al, 'a'
+    je ES_VOCAL
+    cmp al, 'e'
+    je ES_VOCAL
+    cmp al, 'i'
+    je ES_VOCAL
+    cmp al, 'o'
+    je ES_VOCAL
+    cmp al, 'u'
+    je ES_VOCAL
+
+    ; no es vocal -> consonante
+    inc dword [consonantes]
+    inc esi
+    jmp RECORRIDO
+
+ES_VOCAL:
+    inc dword [vocales]
     inc esi
     jmp RECORRIDO
 
