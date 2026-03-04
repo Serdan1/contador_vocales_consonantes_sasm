@@ -111,8 +111,13 @@ AEIOU       5           0               0
 bcdfg       0           5               0
 
 Casos inválidos
+
 Entrada             motivo
+
 hola123             números
+
 hola!               Simbolo
+
 mañana              ñ
+
 café                tilde
