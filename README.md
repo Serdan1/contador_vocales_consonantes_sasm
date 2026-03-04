@@ -52,8 +52,9 @@ Para las entradas válidas, tenemos que contrar:
 
 Definición formal de vocales
 
-Se considera valesles: A E I O U a e i o u
-NO se distingue entre mayúsculas y minúsculas
+Se considera vocales: A E I O U a e i o u
+
+NO se distingue entre mayúsculas y minúsculas.
 
 Definición formal de consonantes
 
@@ -98,10 +99,15 @@ FIN
 
 # 8 Casos de prueba formales
 Casos válidos
+
 Entra       Vocales     Consonantes     Espacios
+
 Hola        2           2               0
+
 Hola mundo  4           5               1
+
 AEIOU       5           0               0
+
 bcdfg       0           5               0
 
 Casos inválidos
