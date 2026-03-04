@@ -1,123 +1,129 @@
-# contador_vocales_consonantes_sasm
+# Contador de Vocales y Consonantes en Ensamblador
 
-# 1 PROPÓSITO DEL PROGRAMA
-El programa debe:
-- Solicitar una cadena de texto.
-- Validar que cumpla reglas estrictas.
-- Contrar:
-    - Vocales
-    - Consonantes
-    - Espacios
-- Mostrar resuntados
-- Repetir hasta que la entrada sea válida
+Proyecto de la asignatura **Arquitectura de Computadores**.
 
-# 2 DEFINICIÓN FORMAL DE ENTRADA VÁLIDA
-Una entrada es válida si y solo si cumple todas las siguientes condiciones:
+Este programa, escrito en **ensamblador NASM (32-bit)** y ejecutado en **SASM**, permite introducir una cadena de texto y calcula:
 
-Longitud
+* Número de **vocales**
+* Número de **consonantes**
+* Número de **espacios**
 
-- Logitud mínima: 1 carácter.
-- Longitud máxima: 100 caracteres.
+El programa valida que el texto contenga **solo letras (A-Z, a-z) y espacios**.
+Si se introduce cualquier otro carácter, muestra un error y solicita nuevamente la entrada.
 
-Caracteres permitidos
+---
 
-- Letras ASCII mayúsculas (A-Z)
-- Letra ASCII minúsculas (a-z)
-- Espacio simple (ASCII 32)
+# Funcionamiento del programa
 
-Codificación
+1. El programa solicita al usuario que introduzca un texto.
+2. La cadena se guarda en un **buffer de 100 caracteres**.
+3. Se recorre la cadena carácter por carácter usando un puntero.
+4. Para cada carácter se realiza:
 
-- Solo ASCII estándar (0-127)
+   * Validación ASCII
+   * Clasificación del carácter:
 
-# 3 Definición formar de Errores
-La entrada es inválida si ocurre cualquiera de los siguientes:
-- Contiene números (0–9)
-- Contiene símbolos (!@#$%^&*)
-- Contiene tildes (á, é, í, ó, ú)
-- Contiene ñ
-- Contiene tabulaciones
-- Contiene caracteres ASCII extendidos (>127)
-- Supera 100 caracteres
+     * Vocal
+     * Consonante
+     * Espacio
+5. Si se detecta un carácter inválido:
 
-# 4 Comportamiento anti Errores
-Cuando la entrada es inválida:
-- Mostrara: Error entrada no valida
-- permitira intentos ilimitados
+   * Se muestra un mensaje de error
+   * El programa vuelve a solicitar el texto.
+6. Si el texto es válido, se muestran los resultados.
 
-# 5 Conteo requerido
-Para las entradas válidas, tenemos que contrar:
-- Total de vocales
-- Total de consonantes
-- Total de espacios
+---
 
-Definición formal de vocales
+# Estructura del proyecto
 
-Se considera vocales: A E I O U a e i o u
+```
+contador_vocales_consonantes_sasm
+│
+├── docs
+│   └── fase2_diseño.md        # Diseño técnico del programa
+│
+├── src
+│   ├── fase2
+│   │   └── main_skeleton.asm  # Estructura del programa
+│   │
+│   └── fase3
+│       └── main.asm           # Implementación completa
+│
+├── README.md
+└── LICENSE
+```
 
-NO se distingue entre mayúsculas y minúsculas.
+---
 
-Definición formal de consonantes
+# Tecnologías utilizadas
 
-Un consonante es: Cualquier letra ASCII válida que no sea vocal.
+* **Lenguaje:** Ensamblador x86
+* **Sintaxis:** NASM
+* **Entorno:** SASM
+* **Macros de entrada/salida:** `io.inc`
 
-# 6  Forma exacta de salida
-La salida tiene que tener la siguiente forma:
+---
 
-Vocales: X
+# Compilación y ejecución
 
-Consonantes: Y
+El programa está pensado para ejecutarse en **SASM**.
 
-Espacios: Z
+Pasos:
 
-Cada elemento tiene que estar en lineas independientes.
+1. Abrir `src/fase3/main.asm` en SASM
+2. Compilar el programa
+3. Ejecutar
+4. Introducir una cadena de texto cuando se solicite
 
-# 7 Flujo formal del programa
-INICIO
-   ↓
-Solicitar texto
-   ↓
-¿Texto vacío?
-   ↓
-¿Supera 100?
-   ↓
-Validar cada carácter
-   ↓
-¿Carácter inválido?
-   ↓
-    SI → Mostrar error → volver a solicitar
-    NO → Continuar validación
-   ↓
-Fin validación
-   ↓
-Contar vocales
-Contar consonantes
-Contar espacios
-   ↓
-Mostrar resultados
-   ↓
-FIN
+---
 
-# 8 Casos de prueba formales
-Casos válidos
+# Ejemplo de ejecución
 
-Entra        Vocales    Consonantes     Espacios
+Entrada del usuario:
 
-Hola         2          2               0
+```
+hola mundo
+```
 
-Hola mundo  4           5               1
+Salida:
 
-AEIOU       5           0               0
+```
+Vocales: 4
+Consonantes: 5
+Espacios: 1
+```
 
-bcdfg       0           5               0
+Si el usuario introduce caracteres inválidos:
 
-Casos inválidos
+```
+hola123
+```
 
-Entrada             motivo
+El programa mostrará:
 
-hola123             números
+```
+ERROR: solo se permiten letras (A-Z, a-z) y espacios.
+```
 
-hola!               Simbolo
+y pedirá el texto nuevamente.
 
-mañana              ñ
+---
 
-café                tilde
+# Conceptos de arquitectura utilizados
+
+El proyecto utiliza varios conceptos fundamentales de **Arquitectura de Computadores**:
+
+* Uso de **registros (EAX, ESI, AL)**
+* Gestión de **memoria (.data y .bss)**
+* Recorrido de strings mediante punteros
+* Comparaciones ASCII
+* Uso de **saltos condicionales**
+* Control de flujo mediante etiquetas
+
+---
+
+# Autor
+
+Daniel, Alexander
+
+Proyecto académico para la asignatura **Arquitectura de Computadores**.
