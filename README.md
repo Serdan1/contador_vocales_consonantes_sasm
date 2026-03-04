@@ -30,7 +30,7 @@ Codificación
 - Solo ASCII estándar (0-127)
 
 # 3 Definición formar de Errores
-La entraada es inválida si ocurre cualquiera de los siguientes:
+La entrada es inválida si ocurre cualquiera de los siguientes:
 - Contiene números (0–9)
 - Contiene símbolos (!@#$%^&*)
 - Contiene tildes (á, é, í, ó, ú)
@@ -39,7 +39,7 @@ La entraada es inválida si ocurre cualquiera de los siguientes:
 - Contiene caracteres ASCII extendidos (>127)
 - Supera 100 caracteres
 
-# 4 Comprotamiento anti Errores
+# 4 Comportamiento anti Errores
 Cuando la entrada es inválida:
 - Mostrara: Error entrada no valida
 - permitira intentos ilimitados
@@ -49,10 +49,14 @@ Para las entradas válidas, tenemos que contrar:
 - Total de vocales
 - Total de consonantes
 - Total de espacios
+
 Definición formal de vocales
+
 Se considera valesles: A E I O U a e i o u
 NO se distingue entre mayúsculas y minúsculas
+
 Definición formal de consonantes
+
 Un consonante es: Cualquier letra ASCII válida que no sea vocal.
 
 # 6  Forma exacta de salida
