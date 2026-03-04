@@ -100,9 +100,9 @@ FIN
 # 8 Casos de prueba formales
 Casos válidos
 
-Entra       Vocales     Consonantes     Espacios
+Entra        Vocales    Consonantes     Espacios
 
-Hola        2           2               0
+Hola         2          2               0
 
 Hola mundo  4           5               1
 
