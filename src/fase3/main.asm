@@ -1,4 +1,5 @@
 %include "io.inc"
+
 section .data
     msg_pedir   db "Introduce texto (solo letras y espacios): ", 0
     msg_error   db "ERROR: solo se permiten letras (A-Z, a-z) y espacios.", 0
@@ -80,7 +81,6 @@ ES_LETRA:
     cmp al, 'u'
     je ES_VOCAL
 
-    ; no es vocal -> consonante
     inc dword [consonantes]
     inc esi
     jmp RECORRIDO
@@ -96,7 +96,17 @@ CARACTER_INVALIDO:
     jmp INICIO
 
 MOSTRAR_RESULTADOS:
-    jmp FIN
+    PRINT_STRING msg_v
+    PRINT_DEC 4, [vocales]
+    NEWLINE
+
+    PRINT_STRING msg_c
+    PRINT_DEC 4, [consonantes]
+    NEWLINE
+
+    PRINT_STRING msg_e
+    PRINT_DEC 4, [espacios]
+    NEWLINE
 
 FIN:
     xor eax, eax
