@@ -39,13 +39,33 @@ RECORRIDO:
     cmp al, ' '
     je ES_ESPACIO
 
-    inc esi
-    jmp RECORRIDO
+    ; validar letras: A-Z o a-z, si no -> error
+    cmp al, 'A'
+    jl CARACTER_INVALIDO
+    cmp al, 'Z'
+    jle ES_LETRA
+
+    cmp al, 'a'
+    jl CARACTER_INVALIDO
+    cmp al, 'z'
+    jle ES_LETRA
+
+    jmp CARACTER_INVALIDO
 
 ES_ESPACIO:
     inc dword [espacios]
     inc esi
     jmp RECORRIDO
+
+ES_LETRA:
+    ; todavía no contamos vocal/consonante
+    inc esi
+    jmp RECORRIDO
+
+CARACTER_INVALIDO:
+    PRINT_STRING msg_error
+    NEWLINE
+    jmp INICIO
 
 MOSTRAR_RESULTADOS:
     jmp FIN
