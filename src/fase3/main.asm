@@ -1,5 +1,4 @@
 %include "io.inc"
-
 section .data
     msg_pedir   db "Introduce texto (solo letras y espacios): ", 0
     msg_error   db "ERROR: solo se permiten letras (A-Z, a-z) y espacios.", 0
