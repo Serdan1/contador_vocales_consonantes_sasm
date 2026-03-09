@@ -27,6 +27,7 @@ INICIO:
 
     PRINT_STRING msg_pedir
     GET_STRING buffer, 100
+    PRINT_STRING buffer
     NEWLINE
 
     mov esi, buffer
