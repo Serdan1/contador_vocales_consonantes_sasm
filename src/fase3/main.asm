@@ -9,10 +9,11 @@ section .data
     msg_e       db "Espacios: ", 0
 
 section .bss
-    buffer      resb 101
-    vocales     resd 1
-    consonantes resd 1
-    espacios    resd 1
+    buffer          resb 101
+    vocales         resd 1
+    consonantes     resd 1
+    espacios        resd 1
+    letras_usadas   resb 26
 
 section .text
 global CMAIN
@@ -21,15 +22,27 @@ CMAIN:
     mov ebp, esp
 
 INICIO:
+    ; Inicializar contadores
     mov dword [vocales], 0
     mov dword [consonantes], 0
     mov dword [espacios], 0
 
+    ; Inicializar array de letras usadas (a-z)
+    mov ecx, 26
+    mov edi, letras_usadas
+
+LIMPIAR:
+    mov byte [edi], 0
+    inc edi
+    loop LIMPIAR
+
+    ; Pedir texto
     PRINT_STRING msg_pedir
     GET_STRING buffer, 100
     PRINT_STRING buffer
     NEWLINE
 
+    ; Apuntar al inicio del buffer
     mov esi, buffer
 
 RECORRIDO:
@@ -40,7 +53,7 @@ RECORRIDO:
     cmp al, ' '
     je ES_ESPACIO
 
-    ; validar letras: A-Z o a-z
+    ; Validar letras: A-Z o a-z
     cmp al, 'A'
     jl CARACTER_INVALIDO
     cmp al, 'Z'
@@ -59,35 +72,48 @@ ES_ESPACIO:
     jmp RECORRIDO
 
 ES_LETRA:
-    ; detectar vocal
+    xor ebx, ebx        ; limpiar ebx
+    mov bl, al
+    or bl, 32           ; convertir a minúscula
+    sub bl, 'a'         ; índice 0-25
+
+    cmp byte [letras_usadas + ebx], 1
+    je YA_CONTADA
+
+    mov byte [letras_usadas + ebx], 1
+
+    ; comprobar si es vocal
     cmp al, 'A'
-    je ES_VOCAL
+    je SUMAR_VOCAL
     cmp al, 'E'
-    je ES_VOCAL
+    je SUMAR_VOCAL
     cmp al, 'I'
-    je ES_VOCAL
+    je SUMAR_VOCAL
     cmp al, 'O'
-    je ES_VOCAL
+    je SUMAR_VOCAL
     cmp al, 'U'
-    je ES_VOCAL
+    je SUMAR_VOCAL
 
     cmp al, 'a'
-    je ES_VOCAL
+    je SUMAR_VOCAL
     cmp al, 'e'
-    je ES_VOCAL
+    je SUMAR_VOCAL
     cmp al, 'i'
-    je ES_VOCAL
+    je SUMAR_VOCAL
     cmp al, 'o'
-    je ES_VOCAL
+    je SUMAR_VOCAL
     cmp al, 'u'
-    je ES_VOCAL
+    je SUMAR_VOCAL
 
+    ; consonante nueva
     inc dword [consonantes]
-    inc esi
-    jmp RECORRIDO
+    jmp CONTINUAR
 
-ES_VOCAL:
+SUMAR_VOCAL:
     inc dword [vocales]
+
+CONTINUAR:
+YA_CONTADA:
     inc esi
     jmp RECORRIDO
 
